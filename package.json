@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-tournament",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchen85/2015-11-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchen85/2015-11-mvp/issues"
+  },
+  "homepage": "https://github.com/jchen85/2015-11-mvp#readme"
+}
