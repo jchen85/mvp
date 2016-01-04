@@ -1,16 +1,12 @@
 angular.module('restourney.landing', [])
 
-.controller('LandingController', function(Restaurants) {
+.controller('LandingController', function($state, Restaurants) {
   this.getLocation = function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        Restaurants.getRestaurants().then(function(data) {
-          console.log(data)
-        });
-      });
-    } else { 
-      console.log("Geolocation is not supported by this browser.");
-    }
+    console.log(this.userLocation);
+    Restaurants.getRestaurants(this.userLocation).then(function(data) {
+      console.log(data)
+      $state.go('game');
+    }.bind(this));
   }
 
 

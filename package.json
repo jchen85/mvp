@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jchen85/2015-11-mvp#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "firebase": "^2.3.2",
     "yelp": "^1.0.1"
   }
 }
