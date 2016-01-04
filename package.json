@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/jchen85/2015-11-mvp/issues"
   },
-  "homepage": "https://github.com/jchen85/2015-11-mvp#readme"
+  "homepage": "https://github.com/jchen85/2015-11-mvp#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "yelp": "^1.0.1"
+  }
 }
