@@ -14,4 +14,12 @@ angular.module('restourney.game', [])
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
+
+  this.chooseLeft = function($http) {
+    console.log('picked left');
+  };
+
+  this.chooseRight = function() {
+    console.log('picked right');
+  };
 });
