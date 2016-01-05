@@ -23,6 +23,7 @@ var formatData = function(data) {
   data.businesses.forEach(function(restaurant) {
     // organize restaurants by a key, which is a hash of the name. This will make it easier to look up a particular
     // restaurant later when we want to update its score.
+    restaurant.image_url = restaurant.image_url.replace('ms.jpg', 'o.jpg');
     var hashedName = hash(restaurant.name);
     formattedData[hashedName] = restaurant;
     formattedData[hashedName]['eloRating'] = 1400;

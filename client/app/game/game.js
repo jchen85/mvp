@@ -5,6 +5,7 @@ angular.module('restourney.game', [])
   this.restaurantsRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/");
   this.left = {};
   this.right = {};
+  this.progress = 0;
 
   var counterOptions = {
     useEasing : false, 
@@ -44,12 +45,77 @@ angular.module('restourney.game', [])
   this.chooseLeft = function() {
     Restaurants.chooseLeft();
     console.log('picked left');
+    GameScope.progress++;
+    // GameScope.growProgressBar();
+    shake('left');
   };
 
   this.chooseRight = function() {
     console.log('picked right');
     Restaurants.chooseRight();
+    GameScope.progress++;
+    shake('right');
   };
+
+  var shake = function(side) {
+    $('#' + side).animate({
+        'margin-left': '-=5px',
+        'margin-right': '+=5px'
+    }, 100, function() {
+        $('#' + side).animate({
+            'margin-left': '+=5px',
+            'margin-right': '-=5px'
+        }, 100, function() {
+          $('#' + side).animate({
+              'margin-left': '-=5px',
+              'margin-right': '+=5px'
+          })
+        });
+    });
+  }
+
+  var init = function() {
+   var $window = $(window),
+   $stickyEl = $('.container-fluid'),
+   elTop = $stickyEl.offset().top;
+
+   $window.scroll(function() {
+        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+    });
+  }
+
+  init();
+  // this.growProgressBar = function() {
+  //   var containerWidth = $("#progressBarContainer").width();
+  //   var currentWidth = d3.select('.progressBar').attr('width');
+  //   d3.select('.progressBar').attr('width', Number(currentWidth) + containerWidth/20)
+  // }
+
+  // var init = function() {
+  //   var containerWidth = $("#progressBarContainer").width(),
+  //       aspect = 500 / 950;
+
+  //   var svg = d3.select("#progressBarContainer").append("svg")
+  //     .attr("preserveAspectRatio", "xMidYMid")
+  //     .attr("viewBox", "0 0 950 500")
+  //     .attr("width", $(window).width())
+  //     .attr("height", width * aspect);
+
+  //   $(window).resize(function() {
+  //     var containerWidth = $("#progressBarContainer").width();
+  //     svg.attr("width", containerWidth);
+  //     svg.attr("height", containerWidth * aspect);
+  //     d3.select('.progressBar').attr('width', containerWidth/GameScope.progress);
+  //   });
+
+  //   svg.append('rect')
+  //     .attr('class', 'progressBar')
+  //     .attr('width', 0)
+  //     .attr('height', 20)
+  //     .style('color', 'blue');
+  // }
+
+  // init();
 
 
 
