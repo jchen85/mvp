@@ -4,10 +4,12 @@
   <img src='{{ game.left.rating_img_url_large }}'></img>
   <img src='{{ game.left.image_url }}'></img>
   {{ game.left.snippet_text }}
+  {{ game.left.eloRating }}
 </div>
 <div id='right' ng-click=game.chooseRight()>
   <h2>{{ game.right.name }}</h2>
   <img src='{{ game.right.rating_img_url_large }}'></img>
   <img src='{{ game.right.image_url }}'></img>
   {{ game.right.snippet_text }}
+  {{ game.right.eloRating }}
 </div>
