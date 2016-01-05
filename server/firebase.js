@@ -12,12 +12,8 @@ var chooseLeft = function(req, res) {
   var leftEloRatingRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + dbState.left + '/eloRating');
 
   dbState[dbState.left].eloRating = leftEloRating + 20;
-  dbState['currentList'] = shuffleArray(dbState['currentList']);
-  dbState['left'] = dbState['currentList'][0];
-  dbState['right'] = dbState['currentList'][1];
 
-  restaurantsRef.set(dbState);
-  res.end();
+  afterChoosingTasks(req, res);
 };
 
 var chooseRight = function(req, res) {
@@ -25,9 +21,22 @@ var chooseRight = function(req, res) {
   var rightEloRatingRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + dbState.right + '/eloRating');
 
   dbState[dbState.right].eloRating = rightEloRating + 20;
+
+  afterChoosingTasks(req, res);
+};
+
+var afterChoosingTasks = function(req, res) {
   dbState['currentList'] = shuffleArray(dbState['currentList']);
   dbState['left'] = dbState['currentList'][0];
   dbState['right'] = dbState['currentList'][1];
+  dbState['currentListNamesScores'] = [];
+  dbState['currentList'].forEach(function(restaurantHash) {
+    dbState['currentListNamesScores'].push({ name: dbState[restaurantHash].name, eloRating: dbState[restaurantHash].eloRating });
+  });
+
+  dbState['currentListNamesScores'].sort(function(a,b) {
+    return b.eloRating - a.eloRating;
+  })
 
   restaurantsRef.set(dbState);
   res.end();
