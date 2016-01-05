@@ -1,11 +1,16 @@
 angular.module('restourney.services', [])
 
 .factory('Restaurants', function($http) {
-  var getRestaurants = function (userLocation) {
-    console.log('getting restaurants')
+  var searchYelpByLocation = function (userLocation) {
     return $http.post('/test', { location: userLocation });
-  }
+  };
+
+  var getRestaurantsFromDB = function() {
+
+  };
+
   return {
-    getRestaurants: getRestaurants
+    searchYelpByLocation: searchYelpByLocation,
+    getRestaurantsFromDB: getRestaurantsFromDB
   };
 });

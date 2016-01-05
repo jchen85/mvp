@@ -6,11 +6,9 @@ angular.module('restourney.game', [])
 
   restaurantsRef.on('value', function(restaurants) {
     var restaurants = restaurants.val();
-    $scope.$apply(function() {
-      GameScope.restaurants = restaurants;
-      GameScope.left = restaurants[restaurants.left];
-      GameScope.right = restaurants[restaurants.right];
-    });
+    GameScope.restaurants = restaurants;
+    GameScope.left = restaurants[restaurants.left];
+    GameScope.right = restaurants[restaurants.right];
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
