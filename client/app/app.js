@@ -16,7 +16,7 @@ angular.module('restourney', [
     .state('game', {
       url: '/game',
       templateUrl: 'app/game/game.html',
-      controller: 'GameController',
+      controller: 'GameController as game',
     })
     .state('entry', {
       url: '/',

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jchen85/2015-11-mvp#readme",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "firebase": "^2.3.2",
     "string-hash": "^1.1.0",
