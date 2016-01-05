@@ -9,12 +9,12 @@ angular.module('restourney.services', [])
 
   };
 
-  var chooseLeft = function(restaurant) {
-    return $http.get('/restaurants/left', { restaurant: restaurant });
+  var chooseLeft = function() {
+    return $http.get('/restaurants/left');
   };
 
   var chooseRight = function() {
-
+    return $http.get('/restaurants/right');
   };
 
   return {

@@ -32,13 +32,13 @@ angular.module('restourney.game', [])
     $state.go('game');
   });
 
-  this.chooseLeft = function($http) {
-    Restaurants.chooseLeft(GameScope.left);
+  this.chooseLeft = function() {
+    Restaurants.chooseLeft();
     console.log('picked left');
   };
 
   this.chooseRight = function() {
     console.log('picked right');
-    GameScope.rightRef.child('eloRating').set(GameScope.restaurants[GameScope.restaurants.right].eloRating + 20);
+    Restaurants.chooseRight();
   };
 });
