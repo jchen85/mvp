@@ -1,3 +1,13 @@
 <h2>Game Here</h2>
-{{ game.left.name }}
-{{ game.right.name }}
+<div id='left' ng-click=game.chooseLeft()>
+  <h2>{{ game.left.name }}</h2>
+  <img src='{{ game.left.rating_img_url_large }}'></img>
+  <img src='{{ game.left.image_url }}'></img>
+  {{ game.left.snippet_text }}
+</div>
+<div id='right' ng-click=game.chooseRight()>
+  <h2>{{ game.right.name }}</h2>
+  <img src='{{ game.right.rating_img_url_large }}'></img>
+  <img src='{{ game.right.image_url }}'></img>
+  {{ game.right.snippet_text }}
+</div>
