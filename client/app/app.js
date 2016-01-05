@@ -1,4 +1,5 @@
 angular.module('restourney', [
+  'firebase',
   'restourney.game',
   'restourney.landing',
   'restourney.services',
