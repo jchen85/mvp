@@ -17,7 +17,8 @@ var shuffleArray = function (array) {
 
 var formatData = function(data) {
   var formattedData = {
-    currentList: []
+    currentList: [],
+    currentListNamesScores: []
   };
   data.businesses.forEach(function(restaurant) {
     // organize restaurants by a key, which is a hash of the name. This will make it easier to look up a particular
@@ -26,6 +27,7 @@ var formatData = function(data) {
     formattedData[hashedName] = restaurant;
     formattedData[hashedName]['eloRating'] = 1400;
     formattedData['currentList'].push(hashedName);
+    formattedData['currentListNamesScores'].push({ name: restaurant.name, eloRating: restaurant.eloRating });
   });
 
   // select two random restaurants to be the current contestants, one for each side of the page

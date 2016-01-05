@@ -5,24 +5,13 @@ angular.module('restourney.game', [])
   this.restaurantsRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/");
   this.left = {};
   this.right = {};
-  this.leftRef = {};
-  this.rightRef = {};
 
   $firebaseObject(this.restaurantsRef).$loaded()
   .then(function(restaurants) {
     GameScope.restaurants = restaurants;
     GameScope.left = restaurants[restaurants.left];
     GameScope.right = restaurants[restaurants.right];
-    GameScope.leftRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.left.toString());
-    GameScope.rightRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.right.toString());
     $state.go('game');
-  })
-
-  $firebaseObject(this.restaurantsRef).$bindTo($scope, 'restaurants')
-  .then(function(restaurants) {
-    $state.go('game');
-    // GameScope.leftRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.left.toString());
-    // GameScope.rightRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.right.toString());
   })
 
   $firebaseObject(this.restaurantsRef).$watch(function() {
