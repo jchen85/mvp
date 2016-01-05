@@ -1,14 +1,12 @@
 angular.module('restourney.game', [])
 
-.controller('GameController', function($scope, $firebaseObject) {
+.controller('GameController', function($scope, $firebaseObject, $state, Restaurants) {
   var GameScope = this;
   this.restaurantsRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/");
   this.left = {};
   this.right = {};
   this.leftRef = {};
   this.rightRef = {};
-
-  var 
 
   $firebaseObject(this.restaurantsRef).$loaded()
   .then(function(restaurants) {
@@ -17,10 +15,12 @@ angular.module('restourney.game', [])
     GameScope.right = restaurants[restaurants.right];
     GameScope.leftRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.left.toString());
     GameScope.rightRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.right.toString());
+    $state.go('game');
   })
 
   $firebaseObject(this.restaurantsRef).$bindTo($scope, 'restaurants')
   .then(function(restaurants) {
+    $state.go('game');
     // GameScope.leftRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.left.toString());
     // GameScope.rightRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/" + restaurants.right.toString());
   })
@@ -29,12 +29,12 @@ angular.module('restourney.game', [])
     console.log('data changed');
     GameScope.left = GameScope.restaurants[GameScope.restaurants.left];
     GameScope.right = GameScope.restaurants[GameScope.restaurants.right];
+    $state.go('game');
   });
 
   this.chooseLeft = function($http) {
+    Restaurants.chooseLeft(GameScope.left);
     console.log('picked left');
-    console.log(GameScope.leftRef);
-    GameScope.leftRef.child('eloRating').set(GameScope.restaurants[GameScope.restaurants.left].eloRating + 20);
   };
 
   this.chooseRight = function() {

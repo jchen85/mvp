@@ -9,8 +9,18 @@ angular.module('restourney.services', [])
 
   };
 
+  var chooseLeft = function(restaurant) {
+    return $http.get('/restaurants/left', { restaurant: restaurant });
+  };
+
+  var chooseRight = function() {
+
+  };
+
   return {
     searchYelpByLocation: searchYelpByLocation,
-    getRestaurantsFromDB: getRestaurantsFromDB
+    getRestaurantsFromDB: getRestaurantsFromDB,
+    chooseLeft: chooseLeft,
+    chooseRight: chooseRight
   };
 });
