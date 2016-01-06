@@ -68,9 +68,11 @@ angular.module('restourney.game', [])
   };
 
   var endGame = function() {
-    GameScope.counter.reset();
-    $('#gameOver').toggle();
-    $('.navbar').toggle();
+    if (GameScope.remainingPicks === 0) {
+      GameScope.counter.reset();
+      $('#gameOver').toggle();
+      $('.navbar').toggle();
+    }
   }
 
   var shake = function(side){
