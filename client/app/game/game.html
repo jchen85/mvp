@@ -10,13 +10,13 @@
         <div>{{ game.restaurants.currentListNamesScores[0].review_count }} reviews</div>
       </div>
     </div>
-    {{ game.restaurants.currentListNamesScores[0].snippet_text }}
+    <div>{{ game.restaurants.currentListNamesScores[0].snippet_text }}</div>
     <img src='{{ game.restaurants.currentListNamesScores[0].image_url }}'></img>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row">
-      <div id='choicesLeft'>Remaining picks: {{ game.remainingPicks = 20 }}</div>
+      <div id='choicesLeft'>Remaining picks: {{ game.remainingPicks }}</div>
       <div id='counter'>10</div>
       <div class='row'>
         <div id='progressBarContainer'>{{ game.progress }}</div>
