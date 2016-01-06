@@ -28,7 +28,7 @@ var formatData = function(data) {
     formattedData[hashedName] = restaurant;
     formattedData[hashedName]['eloRating'] = 1400;
     formattedData['currentList'].push(hashedName);
-    formattedData['currentListNamesScores'].push({ name: restaurant.name, eloRating: restaurant.eloRating });
+    formattedData['currentListNamesScores'].push(restaurant);
   });
 
   // select two random restaurants to be the current contestants, one for each side of the page

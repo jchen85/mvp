@@ -6,6 +6,7 @@ angular.module('restourney.game', [])
   this.left = {};
   this.right = {};
   this.progress = 0;
+  this.remainingPicks = 20;
 
   var counterOptions = {
     useEasing : false, 
@@ -35,36 +36,41 @@ angular.module('restourney.game', [])
   })
 
   $firebaseObject(this.restaurantsRef).$watch(function() {
-    console.log('data changed');
-    GameScope.left = GameScope.restaurants[GameScope.restaurants.left];
-    GameScope.right = GameScope.restaurants[GameScope.restaurants.right];
-    $state.go('game');
-    GameScope.controlCounter();
+    if (GameScope.remainingPicks === 0) {
+      endGame();
+    } else {
+      console.log('data changed');
+      GameScope.left = GameScope.restaurants[GameScope.restaurants.left];
+      GameScope.right = GameScope.restaurants[GameScope.restaurants.right];
+      $state.go('game');
+      GameScope.controlCounter();
+    }
   });
 
   this.chooseLeft = function() {
-    Restaurants.chooseLeft();
-    console.log('picked left');
-    GameScope.progress++;
-    shake('left');
-    if (GameScope.progress > 2) {
-      endGame();
+    if (GameScope.remainingPicks > 0) {
+      Restaurants.chooseLeft();
+      console.log('picked left');
+      GameScope.progress++;
+      GameScope.remainingPicks--;
+      shake('left');
     }
   };
 
   this.chooseRight = function() {
-    console.log('picked right');
-    Restaurants.chooseRight();
-    GameScope.progress++;
-    shake('right');
-    if (GameScope.pickedrogress > 2) {
-      endGame();
+    if (GameScope.remainingPicks > 0) {
+      console.log('picked right');
+      Restaurants.chooseRight();
+      GameScope.progress++;
+      GameScope.remainingPicks--;
+      shake('right');
     }
   };
 
   var endGame = function() {
     GameScope.counter.reset();
-    console.log("game over")
+    $('#gameOver').toggle();
+    $('.navbar').toggle();
   }
 
   var shake = function(side){

@@ -56,7 +56,7 @@ var afterChoosingTasks = function(req, res) {
   // Update the list of restaurants and their scores, then sort by score so the view will put them in order
   dbState['currentListNamesScores'] = [];
   dbState['currentList'].forEach(function(restaurantHash) {
-    dbState['currentListNamesScores'].push({ name: dbState[restaurantHash].name, eloRating: dbState[restaurantHash].eloRating });
+    dbState['currentListNamesScores'].push(dbState[restaurantHash]);
   });
 
   dbState['currentListNamesScores'].sort(function(a,b) {
