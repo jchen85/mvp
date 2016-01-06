@@ -46,8 +46,10 @@ angular.module('restourney.game', [])
     Restaurants.chooseLeft();
     console.log('picked left');
     GameScope.progress++;
-    // GameScope.growProgressBar();
     shake('left');
+    if (GameScope.progress > 2) {
+      endGame();
+    }
   };
 
   this.chooseRight = function() {
@@ -55,9 +57,17 @@ angular.module('restourney.game', [])
     Restaurants.chooseRight();
     GameScope.progress++;
     shake('right');
+    if (GameScope.pickedrogress > 2) {
+      endGame();
+    }
   };
 
-  var shake = function(side) {
+  var endGame = function() {
+    GameScope.counter.reset();
+    console.log("game over")
+  }
+
+  var shake = function(side){
     $('#' + side).animate({
         'margin-left': '-=5px',
         'margin-right': '+=5px'
@@ -66,25 +76,23 @@ angular.module('restourney.game', [])
             'margin-left': '+=5px',
             'margin-right': '-=5px'
         }, 100, function() {
-          $('#' + side).animate({
-              'margin-left': '-=5px',
-              'margin-right': '+=5px'
-          })
+            //and so on...
         });
     });
   }
 
-  var init = function() {
-   var $window = $(window),
-   $stickyEl = $('.container-fluid'),
-   elTop = $stickyEl.offset().top;
 
-   $window.scroll(function() {
-        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
-    });
-  }
+  // var init = function() {
+  //  var $window = $(window),
+  //  $stickyEl = $('.container-fluid'),
+  //  elTop = $stickyEl.offset().top;
 
-  init();
+  //  $window.scroll(function() {
+  //       $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+  //   });
+  // }
+
+  // init();
   // this.growProgressBar = function() {
   //   var containerWidth = $("#progressBarContainer").width();
   //   var currentWidth = d3.select('.progressBar').attr('width');
