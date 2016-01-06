@@ -6,7 +6,6 @@ angular.module('restourney.game', [])
   this.left = {};
   this.right = {};
   this.progress = 0;
-  this.remainingPicks = 20;
 
   var counterOptions = {
     useEasing : false, 

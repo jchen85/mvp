@@ -18,6 +18,7 @@ img {
   border-width: 1px;
   border-color: rgb(204, 204, 200);
   border-style: solid;
+  padding-bottom: 15px;
 }
 
 .col-xs-5:not(:active) {
