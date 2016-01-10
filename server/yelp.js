@@ -1,8 +1,6 @@
 var Yelp = require('yelp');
 var yelp_api_keys = require('./config')
 var yelp = new Yelp(yelp_api_keys);
-var Firebase = require("firebase");
-var restaurantsRef = new Firebase("https://vivid-inferno-1656.firebaseio.com/");
 var hash = require('string-hash');
 
 var shuffleArray = function (array) {

@@ -3,7 +3,5 @@ var db = require('./firebase');
 
 module.exports = function (app, express) {
   app.post('/restaurants', yelpSearch);
-  app.get('/restaurants/left', db.chooseLeft);
-  app.get('/restaurants/right', db.chooseRight);
 };
 
