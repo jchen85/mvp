@@ -19,7 +19,6 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
-    "firebase": "^2.3.2",
     "string-hash": "^1.1.0",
     "yelp": "^1.0.1"
   }
