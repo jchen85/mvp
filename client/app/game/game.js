@@ -6,7 +6,7 @@ angular.module('restourney.game', [])
   this.left = {};
   this.right = {};
   this.progress = 0;
-  this.remainingPicks = 2;
+  this.remainingPicks = 20;
 
   this.counter = new CountUp("counter", 5, 0, 2, 5, counterOptions);
   var counterOptions = {
@@ -28,35 +28,17 @@ angular.module('restourney.game', [])
   // Initialization tasks
   (function() {
     var restaurants = Restaurants.getRestaurantData();
-    GameScope.restaurants = restaurants;
-    GameScope.left = restaurants[restaurants.left];
-    GameScope.right = restaurants[restaurants.right];
-    $state.go('game');
-    GameScope.controlCounter();
+    if (restaurants === undefined) {
+      $state.go('landing');
+    } else {
+      GameScope.restaurants = restaurants;
+      GameScope.left = restaurants[restaurants.left];
+      GameScope.right = restaurants[restaurants.right];
+      $state.go('game');
+      GameScope.controlCounter();
+    }
   })();
-
-
-  // $firebaseObject(this.restaurantsRef).$loaded()
-  // .then(function(restaurants) {
-  //   GameScope.restaurants = restaurants;
-  //   GameScope.left = restaurants[restaurants.left];
-  //   GameScope.right = restaurants[restaurants.right];
-  //   $state.go('game');
-  //   GameScope.controlCounter();
-  // })
-
-  // $firebaseObject(this.restaurantsRef).$watch(function() {
-  //   if (GameScope.remainingPicks === 0) {
-  //     endGame();
-  //   } else {
-  //     console.log('data changed');
-  //     GameScope.left = GameScope.restaurants[GameScope.restaurants.left];
-  //     GameScope.right = GameScope.restaurants[GameScope.restaurants.right];
-  //     $state.go('game');
-  //     GameScope.controlCounter();
-  //   }
-  // });
-
+  
   var doAfterChoosing = function () {
     var restaurants = Restaurants.getRestaurantData();
     GameScope.restaurants = restaurants;
