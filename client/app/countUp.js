@@ -68,7 +68,7 @@ var CountUp = function(target, startVal, endVal, decimals, duration, options) {
     this.duration = Number(duration) * 1000 || 2000;
     var self = this;
 
-    this.version = function () { return '1.6.0'; };
+    this.version = function () { return '1.6.1'; };
 
     // Print value to target
     this.printValue = function(value) {
@@ -120,7 +120,7 @@ var CountUp = function(target, startVal, endVal, decimals, duration, options) {
         }
 
         // decimal
-        self.frameVal = Math.round(self.frameVal*self.dec)/self.dec;
+        self.frameVal = Math.floor(self.frameVal*self.dec)/self.dec;
 
         // format and print value
         self.printValue(self.frameVal);
