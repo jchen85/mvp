@@ -1,12 +1,12 @@
 angular.module('restourney.game', [])
 
-.controller('GameController', function($scope, $firebaseObject, $state, Restaurants) {
+.controller('GameController', function($scope, $state, Restaurants) {
   var GameScope = this;
 
   this.left = {};
   this.right = {};
   this.progress = 0;
-  this.remainingPicks = 20;
+  this.remainingPicks = 2;
 
   this.counter = new CountUp("counter", 5, 0, 2, 5, counterOptions);
   var counterOptions = {
@@ -72,8 +72,7 @@ angular.module('restourney.game', [])
   var endGame = function() {
     if (GameScope.remainingPicks === 0) {
       GameScope.counter.reset();
-      $('#gameOver').toggle();
-      $('.navbar').toggle();
+      $state.go('gameover');
     }
   }
 

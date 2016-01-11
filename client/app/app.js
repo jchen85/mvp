@@ -1,7 +1,7 @@
 angular.module('restourney', [
-  'firebase',
   'restourney.game',
   'restourney.landing',
+  'restourney.gameOver',
   'restourney.services',
   'ui.router'
 ])
@@ -18,6 +18,11 @@ angular.module('restourney', [
       url: '/game',
       templateUrl: 'app/game/game.html',
       controller: 'GameController as game',
+    })
+    .state('gameover', {
+      url: '/gameover',
+      templateUrl: 'app/game/gameover.html',
+      controller: 'GameOverController as game'
     })
     .state('entry', {
       url: '/',

@@ -106,27 +106,17 @@ h2 {
 }
 
 #gameOver {
-  display: none;
-  width: 100%;
-  height: 100%;
   background-color: #af0606;
-  position: fixed;
-  z-index: 2;
 }
 
 #gameOverContent {
+  margin: auto;
+  padding: 1rem;
   border-radius: 4px;
   text-align: center;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
   color: black;
-  position: fixed;
-  background-color: white  
-}
-
-#gameOver img {
-  max-height: 500px;
+  background-color: white;
+  width: 75%;
 }
 
 /*#gameOver h2 {
