@@ -21,7 +21,9 @@ angular.module('restourney.game', [])
   this.controlCounter = function() {
     GameScope.counter.reset();
     GameScope.counter.start(function() {
-      GameScope.chooseLeft();
+      $scope.$apply(function() {
+        GameScope.chooseLeft();
+      });
     });
   };
 
@@ -34,24 +36,21 @@ angular.module('restourney.game', [])
       GameScope.restaurants = restaurants;
       GameScope.left = restaurants[restaurants.left];
       GameScope.right = restaurants[restaurants.right];
-      $state.go('game');
       GameScope.controlCounter();
     }
   })();
 
   var doAfterChoosing = function () {
-    $scope.$apply(function() {
-      var restaurants = Restaurants.getRestaurantData();
-      GameScope.restaurants = restaurants;
-      GameScope.left = restaurants[restaurants.left];
-      GameScope.right = restaurants[restaurants.right];
-      GameScope.progress++;
-      GameScope.remainingPicks--; 
-      if (GameScope.remainingPicks === 0) {
-        endGame();
-      }
-      GameScope.controlCounter();
-    });
+    var restaurants = Restaurants.getRestaurantData();
+    GameScope.restaurants = restaurants;
+    GameScope.left = restaurants[restaurants.left];
+    GameScope.right = restaurants[restaurants.right];
+    GameScope.progress++;
+    GameScope.remainingPicks--;
+    if (GameScope.remainingPicks === 0) {
+      endGame();
+    }
+    GameScope.controlCounter();
   };
 
   this.chooseLeft = function() {
