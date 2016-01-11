@@ -40,7 +40,6 @@ var formatData = function(data) {
 var yelpSearch = function(req, res) {
   yelp.search({ term: 'food', location: req.body.location}).then(function(data) {
     data = formatData(data);
-    restaurantsRef.set(data);
     res.json(data);
   }).catch(function(err) {
     console.log(err);
