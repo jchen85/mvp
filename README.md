@@ -4,7 +4,7 @@ Gamifies the process of picking restaurants. After entering your location, the a
 
 <img src=http://i.imgur.com/gW1rcWQ.jpg></img>
 
-#Instructions for use
+####Instructions for use
 Fork and clone this repo. You must obtain Yelp Developer API keys and place them in server/config.js in a JavaScript object with the following format: 
 
         module.exports = {
